@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7kexnxepb85u"]
+
+[ext_resource type="Script" path="res://collectible.gd" id="1_b70qx"]
+[ext_resource type="Texture2D" uid="uid://bao6x6xsr1kgk" path="res://kenney_pixelplatformer/Tilemap/tiles.png" id="2_2r35e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0awcm"]
+size = Vector2(10, 9)
+
+[node name="Collectible" type="Area2D" groups=["coin"]]
+script = ExtResource("1_b70qx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_2r35e")
+region_enabled = true
+region_rect = Rect2(222.755, 142.837, 12.1617, 12.432)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_0awcm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

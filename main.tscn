@@ -1,0 +1,97 @@
+[gd_scene load_steps=7 format=3 uid="uid://j18j1sbtcp8"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_a2ybj"]
+[ext_resource type="PackedScene" uid="uid://b7y6r6oso58be" path="res://player.tscn" id="1_te5hm"]
+[ext_resource type="PackedScene" uid="uid://bx6d6yh4q31m6" path="res://hud.tscn" id="2_anjym"]
+[ext_resource type="PackedScene" uid="uid://c7kexnxepb85u" path="res://collectible.tscn" id="3_yq5cs"]
+[ext_resource type="PackedScene" uid="uid://cmwqgwqimy0km" path="res://floor.tscn" id="4_waiyv"]
+
+[sub_resource type="Curve2D" id="Curve2D_ww4of"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 26, -16, 0, 0, 0, 0, 293, -19)
+}
+point_count = 2
+
+[node name="Main" type="Node"]
+script = ExtResource("1_a2ybj")
+coin_scene = ExtResource("3_yq5cs")
+
+[node name="HUD" parent="." instance=ExtResource("2_anjym")]
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.380392, 0.831373, 0.964706, 1)
+
+[node name="Player" parent="." instance=ExtResource("1_te5hm")]
+position = Vector2(12, 156)
+
+[node name="floor" parent="." instance=ExtResource("4_waiyv")]
+position = Vector2(7, 175)
+
+[node name="floor2" parent="." instance=ExtResource("4_waiyv")]
+position = Vector2(25, 175)
+
+[node name="floor3" parent="." instance=ExtResource("4_waiyv")]
+position = Vector2(43, 175)
+
+[node name="floor4" parent="." instance=ExtResource("4_waiyv")]
+position = Vector2(61, 175)
+
+[node name="floor5" parent="." instance=ExtResource("4_waiyv")]
+position = Vector2(79, 175)
+
+[node name="floor6" parent="." instance=ExtResource("4_waiyv")]
+position = Vector2(96, 175)
+
+[node name="floor7" parent="." instance=ExtResource("4_waiyv")]
+position = Vector2(114, 175)
+
+[node name="floor8" parent="." instance=ExtResource("4_waiyv")]
+position = Vector2(132, 175)
+
+[node name="floor9" parent="." instance=ExtResource("4_waiyv")]
+position = Vector2(150, 175)
+
+[node name="floor10" parent="." instance=ExtResource("4_waiyv")]
+position = Vector2(168, 175)
+
+[node name="floor11" parent="." instance=ExtResource("4_waiyv")]
+position = Vector2(186, 175)
+
+[node name="floor12" parent="." instance=ExtResource("4_waiyv")]
+position = Vector2(204, 175)
+
+[node name="floor13" parent="." instance=ExtResource("4_waiyv")]
+position = Vector2(222, 175)
+
+[node name="floor14" parent="." instance=ExtResource("4_waiyv")]
+position = Vector2(240, 175)
+
+[node name="floor15" parent="." instance=ExtResource("4_waiyv")]
+position = Vector2(258, 175)
+
+[node name="floor16" parent="." instance=ExtResource("4_waiyv")]
+position = Vector2(276, 175)
+
+[node name="floor17" parent="." instance=ExtResource("4_waiyv")]
+position = Vector2(294, 175)
+
+[node name="floor18" parent="." instance=ExtResource("4_waiyv")]
+position = Vector2(312, 175)
+
+[node name="CoinPath" type="Path2D" parent="."]
+position = Vector2(1, -1)
+curve = SubResource("Curve2D_ww4of")
+
+[node name="CoinSpawnLocation" type="PathFollow2D" parent="CoinPath"]
+position = Vector2(26, -16)
+rotation = -0.0112355
+
+[node name="CoinTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="CoinTimer" to="." method="_on_coin_timer_timeout"]
